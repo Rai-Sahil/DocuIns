@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# dist folder should be ignored by git
+dist/
+
 appsettings.Development.json
 # User-specific files
 *.rsuser
