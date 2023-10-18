@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DocuIns.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class M0 : Migration
+    public partial class m1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,6 +18,8 @@ namespace DocuIns.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -32,6 +34,8 @@ namespace DocuIns.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -160,20 +164,20 @@ namespace DocuIns.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "122b91a9-7318-44ca-8ba4-9e80ad2d3b20", null, "Member", "MEMBER" },
-                    { "ab4b6a82-3629-4beb-be00-b4df60be8e1a", null, "Admin", "ADMIN" }
+                    { "36dc0aa9-6407-4b17-9611-053aae51182d", null, new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6582), "Administrator role with full rights", "Admin", "ADMIN" },
+                    { "f1527427-e19c-4300-a0a2-49270b4d4ef1", null, new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6627), "Member role with limited rights", "Member", "MEMBER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "346e3a7c-a282-4c41-8131-b3ac7f91341e", 0, "f2601d66-53b8-417f-a4eb-4e7dc0233130", "mm@mm.mm", true, false, null, "MM@MM.MM", "MM@MM.MM", "AQAAAAIAAYagAAAAEGk7prxOwZbfbC+KVnjq+uDQc/bZMD9u84pSJLAMYJSz4AJnIsHZ0llJWSJiVqR0/g==", null, false, "2fa40171-f5b9-4aad-8792-bdd76b0c27ea", false, "mm@mm.mm" },
-                    { "eab44432-406d-4c69-8eb4-820e1fdcb973", 0, "41da0172-b1df-442c-a6fc-7c9781adcaa7", "aa@aa.aa", true, false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAIAAYagAAAAEJamSwi7WbiACUfftdF5lVb/UGOX3LOxypJ0aRY1PrK4U7u7XYYu8iWeIyG8ufvKpA==", null, false, "f93b77c9-e1de-4259-ad1a-1d4708d500f0", false, "aa@aa.aa" }
+                    { "892c8be6-ca70-4520-9c1f-79e93fc3089c", 0, "f26de80d-ab67-49ba-83fb-cdc0651caf0c", "mm@mm.mm", true, "John", "Smith", false, null, "MM@MM.MM", "MM@MM.MM", "AQAAAAIAAYagAAAAEENOtKF/UHm52WYKJa+8gdmOs/h11Ij6Y/nhbMYBp+cEMFTNXjq9vzk3niPF+w9dJQ==", null, false, "ba118ff4-f6c5-47b1-b1f5-3679c2b8feef", false, "mm@mm.mm" },
+                    { "a39bdf59-021c-4ae1-aa71-48bb9533d9ce", 0, "fb66b138-1657-4af1-ad40-60fa71459659", "aa@aa.aa", true, "Sahil", "Rai", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAIAAYagAAAAEPgWXjVlhSkm/yCrp2MxzJoN+iiuwu29K9w63gDvBa/sW+hWZkMw+4cxaKiQIfYV5w==", null, false, "8716bd6f-ab8c-4ba3-a3dc-69e7c628d975", false, "aa@aa.aa" }
                 });
 
             migrationBuilder.InsertData(
@@ -181,8 +185,8 @@ namespace DocuIns.Data.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "122b91a9-7318-44ca-8ba4-9e80ad2d3b20", "346e3a7c-a282-4c41-8131-b3ac7f91341e" },
-                    { "ab4b6a82-3629-4beb-be00-b4df60be8e1a", "eab44432-406d-4c69-8eb4-820e1fdcb973" }
+                    { "f1527427-e19c-4300-a0a2-49270b4d4ef1", "892c8be6-ca70-4520-9c1f-79e93fc3089c" },
+                    { "36dc0aa9-6407-4b17-9611-053aae51182d", "a39bdf59-021c-4ae1-aa71-48bb9533d9ce" }
                 });
 
             migrationBuilder.CreateIndex(
