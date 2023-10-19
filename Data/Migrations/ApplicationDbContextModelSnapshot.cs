@@ -22,13 +22,19 @@ namespace DocuIns.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("DocuIns.Models.CustomRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -51,44 +57,23 @@ namespace DocuIns.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ab4b6a82-3629-4beb-be00-b4df60be8e1a",
+                            Id = "36dc0aa9-6407-4b17-9611-053aae51182d",
+                            CreatedDate = new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6582),
+                            Description = "Administrator role with full rights",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "122b91a9-7318-44ca-8ba4-9e80ad2d3b20",
+                            Id = "f1527427-e19c-4300-a0a2-49270b4d4ef1",
+                            CreatedDate = new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6627),
+                            Description = "Member role with limited rights",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+            modelBuilder.Entity("DocuIns.Models.CustomUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -106,6 +91,12 @@ namespace DocuIns.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -155,36 +146,65 @@ namespace DocuIns.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "eab44432-406d-4c69-8eb4-820e1fdcb973",
+                            Id = "a39bdf59-021c-4ae1-aa71-48bb9533d9ce",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "41da0172-b1df-442c-a6fc-7c9781adcaa7",
+                            ConcurrencyStamp = "fb66b138-1657-4af1-ad40-60fa71459659",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
+                            FirstName = "Sahil",
+                            LastName = "Rai",
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJamSwi7WbiACUfftdF5lVb/UGOX3LOxypJ0aRY1PrK4U7u7XYYu8iWeIyG8ufvKpA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPgWXjVlhSkm/yCrp2MxzJoN+iiuwu29K9w63gDvBa/sW+hWZkMw+4cxaKiQIfYV5w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f93b77c9-e1de-4259-ad1a-1d4708d500f0",
+                            SecurityStamp = "8716bd6f-ab8c-4ba3-a3dc-69e7c628d975",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         },
                         new
                         {
-                            Id = "346e3a7c-a282-4c41-8131-b3ac7f91341e",
+                            Id = "892c8be6-ca70-4520-9c1f-79e93fc3089c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f2601d66-53b8-417f-a4eb-4e7dc0233130",
+                            ConcurrencyStamp = "f26de80d-ab67-49ba-83fb-cdc0651caf0c",
                             Email = "mm@mm.mm",
                             EmailConfirmed = true,
+                            FirstName = "John",
+                            LastName = "Smith",
                             LockoutEnabled = false,
                             NormalizedEmail = "MM@MM.MM",
                             NormalizedUserName = "MM@MM.MM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGk7prxOwZbfbC+KVnjq+uDQc/bZMD9u84pSJLAMYJSz4AJnIsHZ0llJWSJiVqR0/g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEENOtKF/UHm52WYKJa+8gdmOs/h11Ij6Y/nhbMYBp+cEMFTNXjq9vzk3niPF+w9dJQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2fa40171-f5b9-4aad-8792-bdd76b0c27ea",
+                            SecurityStamp = "ba118ff4-f6c5-47b1-b1f5-3679c2b8feef",
                             TwoFactorEnabled = false,
                             UserName = "mm@mm.mm"
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -253,13 +273,13 @@ namespace DocuIns.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "eab44432-406d-4c69-8eb4-820e1fdcb973",
-                            RoleId = "ab4b6a82-3629-4beb-be00-b4df60be8e1a"
+                            UserId = "a39bdf59-021c-4ae1-aa71-48bb9533d9ce",
+                            RoleId = "36dc0aa9-6407-4b17-9611-053aae51182d"
                         },
                         new
                         {
-                            UserId = "346e3a7c-a282-4c41-8131-b3ac7f91341e",
-                            RoleId = "122b91a9-7318-44ca-8ba4-9e80ad2d3b20"
+                            UserId = "892c8be6-ca70-4520-9c1f-79e93fc3089c",
+                            RoleId = "f1527427-e19c-4300-a0a2-49270b4d4ef1"
                         });
                 });
 
@@ -286,7 +306,7 @@ namespace DocuIns.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("DocuIns.Models.CustomRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -295,7 +315,7 @@ namespace DocuIns.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("DocuIns.Models.CustomUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -304,7 +324,7 @@ namespace DocuIns.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("DocuIns.Models.CustomUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -313,13 +333,13 @@ namespace DocuIns.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("DocuIns.Models.CustomRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("DocuIns.Models.CustomUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -328,7 +348,7 @@ namespace DocuIns.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("DocuIns.Models.CustomUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

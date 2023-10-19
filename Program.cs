@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DocuIns.Data;
+using DocuIns.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+// var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
 // Add services to the container.
 var host = builder.Configuration["DBHOST"] ?? "docuins-db-1";
@@ -13,19 +15,21 @@ var user = builder.Configuration["DBUSER"] ?? "sa";
 
 string connectionString = $"Server={host},{port};Database={db};UID={user};PWD={password};TrustServerCertificate=True;";
 
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+// builder.Services.AddDefaultIdentity<CustomUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+builder.Services.AddIdentity<CustomUser, CustomRole>(
 options => {
     options.Stores.MaxLengthForKeys = 128;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
-.AddRoles<IdentityRole>()
+.AddRoles<CustomRole>()
 .AddDefaultUI()
 .AddDefaultTokenProviders();
 
