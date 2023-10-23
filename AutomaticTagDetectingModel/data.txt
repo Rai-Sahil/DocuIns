@@ -1,0 +1,5 @@
+This is a valid statement. 1
+The moon is made of cheese. 0
+The quick brown fox jumps over the lazy dog. 1
+Apples are a type of fruit. 1
+Programming is fun. 1
