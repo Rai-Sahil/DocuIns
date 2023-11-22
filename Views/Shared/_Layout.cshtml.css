@@ -17,7 +17,8 @@ a {
   border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
@@ -26,6 +27,7 @@ a {
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -39,10 +41,76 @@ button.accept-policy {
   line-height: inherit;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f1f1f1; /* Set your header background color */
+  padding: 10px; /* Set your header padding */
+  z-index: 2; /* Ensure the header is above the sidenav */
+}
+
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: #f1f1f1; /* Set your footer background color */
+  padding: 10px; /* Set your footer padding */
   white-space: nowrap;
-  line-height: 60px;
+  line-height: 20px;
+  z-index: 2; /* Ensure the footer is above the sidenav */
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+.container {
+  margin-left: 250px;
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 60px;
+  bottom: 20px;
+  left: 0px;
+  height: 90vh;
+  background: #7831d6;
+  overflow-x: hidden;
+  padding: 8px 0;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.sidenav a {
+  padding: 10px 8px 10px 16px;
+  margin: 20px 0px 20px 0px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #edc3f8;
+  display: block;
+
+}
+
+.sidenav a i {
+  margin-right: 5px; /* Adjust this value to control the space between the icon and text */
+}
+
+
+.sidenav a:hover {
+  color: #064579;
+  background-color: #edc3f8;
+  border-radius: 15px;
+  width: 80%;
+}
+
+.main {
+  position: relative;
+  margin-left: 550px; /* Same as the width of .sidenav */
+  padding: 200px 10px;
+  box-sizing: border-box;
 }
