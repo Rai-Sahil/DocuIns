@@ -9,19 +9,19 @@ html {
 }
 
 .btn {
-  background-color: rgb(52, 13, 79);
-  color: rgb(191, 173, 204);
+  background-color: #4154f1;
+  color: rgb(255, 255, 255);
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem rgb(52, 13, 79), 0 0 0 0.25rem rgb(191, 173, 204);
+  box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 }
 
 .form-control {
   background-color: rgb(191, 173, 204);
-  color: rgb(52, 13, 79);
+  color: #4154f1;
 }
 
 html {
@@ -31,5 +31,5 @@ html {
 
 body {
   margin-bottom: 60px;
-  background-color: #fff9eb;
+  background-color: #ffffff;
 }
