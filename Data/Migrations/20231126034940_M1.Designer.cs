@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DocuIns.Data.Migrations
+namespace DocuIns.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231018070756_m1")]
-    partial class m1
+    [Migration("20231126034940_M1")]
+    partial class M1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,16 +60,16 @@ namespace DocuIns.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "36dc0aa9-6407-4b17-9611-053aae51182d",
-                            CreatedDate = new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6582),
+                            Id = "c1f1ef76-ec42-4099-9101-dfedd74ef64c",
+                            CreatedDate = new DateTime(2023, 11, 25, 19, 49, 39, 976, DateTimeKind.Local).AddTicks(2660),
                             Description = "Administrator role with full rights",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "f1527427-e19c-4300-a0a2-49270b4d4ef1",
-                            CreatedDate = new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6627),
+                            Id = "8606b7d7-64e7-4d39-b96d-19ce4f56eaa9",
+                            CreatedDate = new DateTime(2023, 11, 25, 19, 49, 39, 976, DateTimeKind.Local).AddTicks(2710),
                             Description = "Member role with limited rights",
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -149,9 +149,9 @@ namespace DocuIns.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a39bdf59-021c-4ae1-aa71-48bb9533d9ce",
+                            Id = "20a7d790-ab90-4fe6-9e4d-7bf9b29aaf46",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fb66b138-1657-4af1-ad40-60fa71459659",
+                            ConcurrencyStamp = "04f86539-c981-4a3b-a533-2ee829d7ebcb",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             FirstName = "Sahil",
@@ -159,17 +159,17 @@ namespace DocuIns.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPgWXjVlhSkm/yCrp2MxzJoN+iiuwu29K9w63gDvBa/sW+hWZkMw+4cxaKiQIfYV5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO94A2929nKyNwwwbBqiGWe7LOg0kWiBVfnBnjsEUjC6kK/XbAo+ks2Ms52YmlswtQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8716bd6f-ab8c-4ba3-a3dc-69e7c628d975",
+                            SecurityStamp = "f3c8614f-9bf8-4f93-946f-11d42dfcb2b0",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         },
                         new
                         {
-                            Id = "892c8be6-ca70-4520-9c1f-79e93fc3089c",
+                            Id = "3b244210-6202-46f6-a762-296b4aa8a9f2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f26de80d-ab67-49ba-83fb-cdc0651caf0c",
+                            ConcurrencyStamp = "97b96ce2-028d-4d04-aacc-fe2baf12018e",
                             Email = "mm@mm.mm",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -177,9 +177,9 @@ namespace DocuIns.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MM@MM.MM",
                             NormalizedUserName = "MM@MM.MM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEENOtKF/UHm52WYKJa+8gdmOs/h11Ij6Y/nhbMYBp+cEMFTNXjq9vzk3niPF+w9dJQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMa12MqrmbLtEesAGab4UkSOk5NGfMRVQit8pTAmtMBZ+ZSkb8yomQWVh8kz7GKYXA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ba118ff4-f6c5-47b1-b1f5-3679c2b8feef",
+                            SecurityStamp = "6e17bf63-070b-4274-b832-62f1643c6e53",
                             TwoFactorEnabled = false,
                             UserName = "mm@mm.mm"
                         });
@@ -276,13 +276,13 @@ namespace DocuIns.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "a39bdf59-021c-4ae1-aa71-48bb9533d9ce",
-                            RoleId = "36dc0aa9-6407-4b17-9611-053aae51182d"
+                            UserId = "20a7d790-ab90-4fe6-9e4d-7bf9b29aaf46",
+                            RoleId = "c1f1ef76-ec42-4099-9101-dfedd74ef64c"
                         },
                         new
                         {
-                            UserId = "892c8be6-ca70-4520-9c1f-79e93fc3089c",
-                            RoleId = "f1527427-e19c-4300-a0a2-49270b4d4ef1"
+                            UserId = "3b244210-6202-46f6-a762-296b4aa8a9f2",
+                            RoleId = "8606b7d7-64e7-4d39-b96d-19ce4f56eaa9"
                         });
                 });
 

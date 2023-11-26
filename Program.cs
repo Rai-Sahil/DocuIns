@@ -7,16 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 // var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
 // Add services to the container.
-// var host = builder.Configuration["DBHOST"] ?? "docuins-db-1";
-// var port = builder.Configuration["DBPORT"] ?? "1433";
-// var password = builder.Configuration["DBPASSWORD"] ?? "SqlPassword!";
-// var db = builder.Configuration["DBNAME"] ?? "Users";
-// var user = builder.Configuration["DBUSER"] ?? "sa";
+var host = builder.Configuration["DBHOST"] ?? "docuins-db-1";
+var port = builder.Configuration["DBPORT"] ?? "1433";
+var password = builder.Configuration["DBPASSWORD"] ?? "SqlPassword!";
+var db = builder.Configuration["DBNAME"] ?? "Users";
+var user = builder.Configuration["DBUSER"] ?? "sa";
 
-// string connectionString = $"Server={host},{port};Database={db};UID={user};PWD={password};TrustServerCertificate=True;";
+string connectionString = $"Server={host},{port};Database={db};UID={user};PWD={password};TrustServerCertificate=True;";
 
 // var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-var connectionString = "Server=tcp:127.0.0.1,1444;Database=Users;UID=sa;PWD=SqlPassword!;TrustServerCertificate=True;";
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 

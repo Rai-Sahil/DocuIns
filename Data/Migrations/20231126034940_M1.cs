@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace DocuIns.Data.Migrations
+namespace DocuIns.data.migrations
 {
     /// <inheritdoc />
-    public partial class m1 : Migration
+    public partial class M1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -167,8 +167,8 @@ namespace DocuIns.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "CreatedDate", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "36dc0aa9-6407-4b17-9611-053aae51182d", null, new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6582), "Administrator role with full rights", "Admin", "ADMIN" },
-                    { "f1527427-e19c-4300-a0a2-49270b4d4ef1", null, new DateTime(2023, 10, 18, 0, 7, 56, 573, DateTimeKind.Local).AddTicks(6627), "Member role with limited rights", "Member", "MEMBER" }
+                    { "8606b7d7-64e7-4d39-b96d-19ce4f56eaa9", null, new DateTime(2023, 11, 25, 19, 49, 39, 976, DateTimeKind.Local).AddTicks(2710), "Member role with limited rights", "Member", "MEMBER" },
+                    { "c1f1ef76-ec42-4099-9101-dfedd74ef64c", null, new DateTime(2023, 11, 25, 19, 49, 39, 976, DateTimeKind.Local).AddTicks(2660), "Administrator role with full rights", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -176,8 +176,8 @@ namespace DocuIns.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "892c8be6-ca70-4520-9c1f-79e93fc3089c", 0, "f26de80d-ab67-49ba-83fb-cdc0651caf0c", "mm@mm.mm", true, "John", "Smith", false, null, "MM@MM.MM", "MM@MM.MM", "AQAAAAIAAYagAAAAEENOtKF/UHm52WYKJa+8gdmOs/h11Ij6Y/nhbMYBp+cEMFTNXjq9vzk3niPF+w9dJQ==", null, false, "ba118ff4-f6c5-47b1-b1f5-3679c2b8feef", false, "mm@mm.mm" },
-                    { "a39bdf59-021c-4ae1-aa71-48bb9533d9ce", 0, "fb66b138-1657-4af1-ad40-60fa71459659", "aa@aa.aa", true, "Sahil", "Rai", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAIAAYagAAAAEPgWXjVlhSkm/yCrp2MxzJoN+iiuwu29K9w63gDvBa/sW+hWZkMw+4cxaKiQIfYV5w==", null, false, "8716bd6f-ab8c-4ba3-a3dc-69e7c628d975", false, "aa@aa.aa" }
+                    { "20a7d790-ab90-4fe6-9e4d-7bf9b29aaf46", 0, "04f86539-c981-4a3b-a533-2ee829d7ebcb", "aa@aa.aa", true, "Sahil", "Rai", false, null, "AA@AA.AA", "AA@AA.AA", "AQAAAAIAAYagAAAAEO94A2929nKyNwwwbBqiGWe7LOg0kWiBVfnBnjsEUjC6kK/XbAo+ks2Ms52YmlswtQ==", null, false, "f3c8614f-9bf8-4f93-946f-11d42dfcb2b0", false, "aa@aa.aa" },
+                    { "3b244210-6202-46f6-a762-296b4aa8a9f2", 0, "97b96ce2-028d-4d04-aacc-fe2baf12018e", "mm@mm.mm", true, "John", "Smith", false, null, "MM@MM.MM", "MM@MM.MM", "AQAAAAIAAYagAAAAEMa12MqrmbLtEesAGab4UkSOk5NGfMRVQit8pTAmtMBZ+ZSkb8yomQWVh8kz7GKYXA==", null, false, "6e17bf63-070b-4274-b832-62f1643c6e53", false, "mm@mm.mm" }
                 });
 
             migrationBuilder.InsertData(
@@ -185,8 +185,8 @@ namespace DocuIns.Data.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "f1527427-e19c-4300-a0a2-49270b4d4ef1", "892c8be6-ca70-4520-9c1f-79e93fc3089c" },
-                    { "36dc0aa9-6407-4b17-9611-053aae51182d", "a39bdf59-021c-4ae1-aa71-48bb9533d9ce" }
+                    { "c1f1ef76-ec42-4099-9101-dfedd74ef64c", "20a7d790-ab90-4fe6-9e4d-7bf9b29aaf46" },
+                    { "8606b7d7-64e7-4d39-b96d-19ce4f56eaa9", "3b244210-6202-46f6-a762-296b4aa8a9f2" }
                 });
 
             migrationBuilder.CreateIndex(
