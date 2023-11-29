@@ -1,0 +1,39 @@
+body{
+    overflow-x: hidden;
+}
+
+.main-container {
+    display: flex;
+    margin: -15px -112px -15px -112px;
+    height: 90vh;
+}
+
+.left-side {
+    width: 100%;
+    height: 90vh;
+    border-radius: 15px;
+    background-color: #3d0965;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pdf-container {
+    height: 86vh;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.pdf-frame {
+    width: 100%;
+    height: 100%;
+}
+
+.right-side {
+    width: 100%;
+    height: 90vh;
+    border-radius: 15px;
+    background-color: #ae6bb8;
+    padding: 20px;
+    box-sizing: border-box;
+}

@@ -57,16 +57,16 @@ namespace DocuIns.data.migrations
                     b.HasData(
                         new
                         {
-                            Id = "eec48cc2-1fe0-479b-a974-75b3d9320259",
-                            CreatedDate = new DateTime(2023, 11, 25, 20, 13, 25, 18, DateTimeKind.Local).AddTicks(4780),
+                            Id = "1e16eacc-eba4-4d9e-9f81-1a322b17981c",
+                            CreatedDate = new DateTime(2023, 11, 28, 1, 20, 24, 380, DateTimeKind.Local).AddTicks(770),
                             Description = "Administrator role with full rights",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "7aa598a6-7f7b-460f-914f-fea990907ce0",
-                            CreatedDate = new DateTime(2023, 11, 25, 20, 13, 25, 18, DateTimeKind.Local).AddTicks(4800),
+                            Id = "e02c18c8-b79f-4563-9823-839c45879880",
+                            CreatedDate = new DateTime(2023, 11, 28, 1, 20, 24, 380, DateTimeKind.Local).AddTicks(810),
                             Description = "Member role with limited rights",
                             Name = "Member",
                             NormalizedName = "MEMBER"
@@ -146,9 +146,9 @@ namespace DocuIns.data.migrations
                     b.HasData(
                         new
                         {
-                            Id = "300015c0-7c3d-44df-b939-6af825b85e34",
+                            Id = "7395f5e8-57d1-444a-b2e1-a9cdad709550",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "710c9d0b-cbc2-4e0f-8de2-afaabd5ae5b2",
+                            ConcurrencyStamp = "15bad44a-8b6b-4375-a338-a30a5a760688",
                             Email = "aa@aa.aa",
                             EmailConfirmed = true,
                             FirstName = "Sahil",
@@ -156,17 +156,17 @@ namespace DocuIns.data.migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AA@AA.AA",
                             NormalizedUserName = "AA@AA.AA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEh010jcI3swVrWErXv7fC39xhYR2HnvepoZwipv/aMtidbA56s1g2+n+nR0EPPp2Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG15xtNKrPCQ3pcj9UXFDNC1QOANqee3/a219huCmlTLfvnvun9FlZcGl0RYL4FUgQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "98f4001b-050f-4e8b-8767-ef1948595024",
+                            SecurityStamp = "c4771568-5156-44e5-bfd7-60e7dd008d0a",
                             TwoFactorEnabled = false,
                             UserName = "aa@aa.aa"
                         },
                         new
                         {
-                            Id = "44237b27-756c-4031-a1f0-e992dc6ff811",
+                            Id = "86679fcf-28c2-46f0-940e-221b5ab342aa",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3783b7f7-fafe-47d8-979f-d662e232d62f",
+                            ConcurrencyStamp = "4b5d445a-5c99-4a21-bdd8-b5b78831afd9",
                             Email = "mm@mm.mm",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -174,9 +174,9 @@ namespace DocuIns.data.migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MM@MM.MM",
                             NormalizedUserName = "MM@MM.MM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMxSRIIGVfJhDHNdF59GhA3gYWoBSlWGXQ/jvpX+9oeTmfibf+xzvSfVxycB8oYKVw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM37bLNPuUhQYsC3N8qcmVsYDT/JocBGF9TKFDfRpaGoOe/9Q7wG0qNUUHEYEk7ezg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fd1521bc-4c90-46b7-bf83-72fd0ed30b34",
+                            SecurityStamp = "7512aed6-42ad-46aa-9bdf-f91ab5716636",
                             TwoFactorEnabled = false,
                             UserName = "mm@mm.mm"
                         });
@@ -273,13 +273,13 @@ namespace DocuIns.data.migrations
                     b.HasData(
                         new
                         {
-                            UserId = "300015c0-7c3d-44df-b939-6af825b85e34",
-                            RoleId = "eec48cc2-1fe0-479b-a974-75b3d9320259"
+                            UserId = "7395f5e8-57d1-444a-b2e1-a9cdad709550",
+                            RoleId = "1e16eacc-eba4-4d9e-9f81-1a322b17981c"
                         },
                         new
                         {
-                            UserId = "44237b27-756c-4031-a1f0-e992dc6ff811",
-                            RoleId = "7aa598a6-7f7b-460f-914f-fea990907ce0"
+                            UserId = "86679fcf-28c2-46f0-940e-221b5ab342aa",
+                            RoleId = "e02c18c8-b79f-4563-9823-839c45879880"
                         });
                 });
 
