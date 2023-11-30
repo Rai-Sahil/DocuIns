@@ -6,7 +6,7 @@ namespace DocuIns.Models
         public string? Name { get; set; }
         public string? Description { get; set; }
         public string? Path { get; set; }
-        public string? Owner { get; set; }
+        public int? OwnerID { get; set; }
         public string? Status { get; set; }
         public string? Tag { get; set; }
         public string? CreatedDate { get; set; }
