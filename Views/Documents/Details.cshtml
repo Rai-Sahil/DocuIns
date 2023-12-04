@@ -4,74 +4,121 @@
     ViewData["Title"] = @Html.DisplayNameFor(model => model.Name);
 }
 
-<link rel="stylesheet" href="~/css/Document.css" />
+<link rel="stylesheet" href="/css/Document.css" />
 <div class="main-container">
     <div class="left-side">
         <div class="pdf-container">
-            <object data="https://d1m5sbyhb726tv.cloudfront.net/Buble%20testing%20Plan.pdf" type="application/pdf" class="pdf-frame" height="300" width="20%">
+            <object data="@Html.DisplayFor(model => model.Path)" type="application/pdf" class="pdf-frame" height="300"
+                width="20%">
             </object>
         </div>
     </div>
     <div class="right-side">
-        
+        <div class="chat-container">
+            <div class="chat-messages">
+                <!-- This is where chat messages will be displayed -->
+                <div class="message">Sample message from user A</div>
+                <div class="message">Another message from user B</div>
+                <!-- Add more messages dynamically using JavaScript -->
+            </div>
+            <div class="chat-input">
+                <!-- Input field for typing messages -->
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
     </div>
 </div>
 
+<script>
+    document.getElementById("send-button").addEventListener("click", function () {
+        // use FormData to upload files
+        try {
+            console.log("Hello");
+            let formData = new FormData();
+            formData.append("files", "/Users/sahilrai/Developer/DocuIns/wwwroot/Untitled.txt")
+            formData.append("topK", 1)
+            formData.append("metadata", { "key": "val" })
+            formData.append("chunkSize", 1)
+            console.log(formData);
+
+            async function query(formData) {
+                const response = await fetch(
+                    "http://localhost:3000/api/v1/vector/upsert/0fae1c12-cd32-4f22-94a4-20f5e0008d86",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+                const result = await response.json();
+                return result;
+            }
+
+            query(formData).then((response) => {
+                console.log(response);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
+    });
+</script>
+
 @* <div>
-    <h4>Document</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Path)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Path)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tag)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tag)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
-        </dd>
-    </dl>
+<h4>Document</h4>
+<hr />
+<dl class="row">
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.Name)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.Name)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.Description)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.Description)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.Path)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.Path)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.Status)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.Status)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.Tag)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.Tag)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.CreatedDate)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.CreatedDate)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.ModifiedDate)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.ModifiedDate)
+</dd>
+<dt class = "col-sm-2">
+@Html.DisplayNameFor(model => model.User)
+</dt>
+<dd class = "col-sm-10">
+@Html.DisplayFor(model => model.User.Id)
+</dd>
+</dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+<a asp-action="Index">Back to List</a>
 </div> *@

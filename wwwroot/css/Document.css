@@ -13,8 +13,8 @@ body{
     height: 90vh;
     border-radius: 15px;
     background-color: #3d0965;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 10px;
+    padding-left: 20px;
 }
 
 .pdf-container {
@@ -34,6 +34,63 @@ body{
     height: 90vh;
     border-radius: 15px;
     background-color: #ae6bb8;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 }
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.left-side {
+    width: 50%;
+}
+
+.right-side {
+    width: 50%;
+}
+
+.pdf-container {
+    margin: 20px;
+}
+
+.pdf-frame {
+    border: 1px solid #ccc;
+}
+
+.chat-container {
+    margin: 20px;
+}
+
+.chat-messages {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.chat-input {
+    display: flex;
+    margin-top: 10px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#send-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+

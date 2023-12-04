@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DocuIns.Models.Documents;
+using Amazon.S3;
+using Amazon.S3.Transfer;
+using Amazon.Runtime;
 
 namespace DocuIns.Controllers
 {
@@ -55,11 +58,28 @@ namespace DocuIns.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Path,UserId,Status,Tag,CreatedDate,ModifiedDate")] Document document)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Path,UserId,Status,Tag,CreatedDate,ModifiedDate")] Document document, IFormFile file)
         {
             if (ModelState.IsValid)
             {
+                var credentials = new BasicAWSCredentials("AKIA2MBFTIOOQBGU2YW3", 
+                "xaQVhDfv0VY2JBEuvB29LAAyW1MByc8n6zL3Hi4o");
+                var region = Amazon.RegionEndpoint.USWest2;
+                using (var amazonS3Client = new AmazonS3Client(credentials, region)) {
+                    using (var memoryStream = new MemoryStream()) {
+                        file.CopyTo(memoryStream);
+                        var request = new TransferUtilityUploadRequest {
+                            InputStream = memoryStream,
+                            Key = file.FileName,
+                            BucketName = "docuins-bucket",
+                           ContentType = file.ContentType,
+                        };
+
+                        var transferUtility = new TransferUtility(amazonS3Client);
+                        await transferUtility.UploadAsync(request);
+                    }
+                }
+                document.Path = $"https://d1bj1bc7hxixa3.cloudfront.net/{file.FileName}";
                 _context.Add(document);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -154,7 +174,7 @@ namespace DocuIns.Controllers
             {
                 _context.Documents.Remove(document);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -165,3 +185,25 @@ namespace DocuIns.Controllers
         }
     }
 }
+                // if (pdfFile != null && pdfFile.Length > 0)
+                // {
+                //     var awsAccessKeyId = "AKIA2MBFTIOO7EIHIATA";
+                //     var awsSecretAccessKey = "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";
+                //     var awsRegion = Amazon.RegionEndpoint.USWest2;
+
+                //     using (var memoryStream = new MemoryStream())
+                //     {
+                //         await pdfFile.CopyToAsync(memoryStream);
+                //         var s3Client = new AmazonS3Client(awsAccessKeyId, awsSecretAccessKey, awsRegion);
+                //         var fileTransferUtility = new TransferUtility(s3Client);
+
+                //         var key = Guid.NewGuid().ToString(); // Unique key for S3 object
+                //         var bucketName = "practicebucket-sahil";
+
+                //         await fileTransferUtility.UploadAsync("Lab2_D6_Amazon.pdf", bucketName, key);
+
+                //         // Set the S3 URL in the document's Path property
+                //         document.Path = $"https://{bucketName}.s3.amazonaws.com/{key}";
+                //         Console.WriteLine($"Uploaded to: {document.Path}");
+                //     }
+                // }

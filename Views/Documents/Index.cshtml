@@ -1,44 +1,95 @@
 @model IEnumerable<DocuIns.Models.Documents.Document>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
 }
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<div class="container">
-@foreach (var item in Model) {
-    <a class="card" style="width: 18rem;" asp-action="Details" asp-route-id="@item.Id">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">@Html.DisplayFor(modelItem => item.Name)</p>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <link rel="stylesheet" href="css/ViewAllDocument.css">
+    <div>
+    <div class="card-container">
+        <a href="/" class="hero-image-container">
+            <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg"
+                alt="Spinning glass cube" />
+        </a>
+        <main class="main-content">
+            <h3><a href="#">Equilibrium #3429</a></h3>
+            <p>Our Equilibrium collection promotes balance and calm.</p>
+        </main>
+        <div class="card-attribute">
+            <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar" />
+            <p>Creation of <span><a href="#">Jules Wyvern</a></span></p>
         </div>
-    </a>
-}
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    </div>
+
+    <div class="card-container">
+        <a href="/" class="hero-image-container">
+            <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg"
+                alt="Spinning glass cube" />
+        </a>
+        <main class="main-content">
+            <h3><a href="#">Equilibrium #3429</a></h3>
+            <p>Our Equilibrium collection promotes balance and calm.</p>
+        </main>
+        <div class="card-attribute">
+            <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar" />
+            <p>Creation of <span><a href="#">Jules Wyvern</a></span></p>
+        </div>
+    </div>
+
+    <div class="card-container">
+        <a href="/" class="hero-image-container">
+            <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg"
+                alt="Spinning glass cube" />
+        </a>
+        <main class="main-content">
+            <h3><a href="#">Equilibrium #3429</a></h3>
+            <p>Our Equilibrium collection promotes balance and calm.</p>
+        </main>
+        <div class="card-attribute">
+            <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar" />
+            <p>Creation of <span><a href="#">Jules Wyvern</a></span></p>
+        </div>
+    </div>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <a class="card" style="width: 18rem;" asp-action="Details" asp-route-id="@item.Id">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Name)</p>
+                </div>
+            </a>
+        }
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
-@* 
+@*
 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+<a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
