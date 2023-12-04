@@ -15,11 +15,8 @@
     </div>
     <div class="right-side">
         <div class="chat-container">
-            <div class="chat-messages">
+            <div class="chat-messages" id="chat-messages">
                 <!-- This is where chat messages will be displayed -->
-                <div class="message">Sample message from user A</div>
-                <div class="message">Another message from user B</div>
-                <!-- Add more messages dynamically using JavaScript -->
             </div>
             <div class="chat-input">
                 <!-- Input field for typing messages -->
@@ -31,37 +28,74 @@
 </div>
 
 <script>
-    document.getElementById("send-button").addEventListener("click", function () {
-        // use FormData to upload files
-        try {
-            console.log("Hello");
-            let formData = new FormData();
-            formData.append("files", "/Users/sahilrai/Developer/DocuIns/wwwroot/Untitled.txt")
-            formData.append("topK", 1)
-            formData.append("metadata", { "key": "val" })
-            formData.append("chunkSize", 1)
-            console.log(formData);
+    document.getElementById("send-button").addEventListener("click", async function () {
+        const messageInput = document.getElementById("message-input");
+        const message = messageInput.value.trim();
 
-            async function query(formData) {
-                const response = await fetch(
-                    "http://localhost:3000/api/v1/vector/upsert/0fae1c12-cd32-4f22-94a4-20f5e0008d86",
-                    {
-                        method: "POST",
-                        body: formData
-                    }
-                );
-                const result = await response.json();
-                return result;
+        if (message !== "") {
+            const chatMessages = document.getElementById("chat-messages");
+
+            // Add user message to the chat interface
+            const userMessageElement = document.createElement("div");
+            userMessageElement.classList.add("message", "user");
+            userMessageElement.textContent = message;
+            chatMessages.appendChild(userMessageElement);
+
+            // Send the message to your API and get the response
+            try {
+                const response = await sendMessageToAPI(message); // Call your API function here
+
+                // Display the response as a chat message
+                addBotMessageToChat(response, chatMessages);
+            } catch (error) {
+                console.error("Error:", error);
             }
 
-            query(formData).then((response) => {
-                console.log(response);
-            });
-        } catch (error) {
-            console.log(error);
+            // Clear the input field after sending the message
+            messageInput.value = "";
         }
-
     });
+
+    // Function to add bot message to chat
+    function addBotMessageToChat(response, chatMessages) {
+        const botMessageElement = document.createElement("div");
+        botMessageElement.classList.add("message", "bot");
+        botMessageElement.textContent = response; // Assuming the response is text
+        chatMessages.appendChild(botMessageElement);
+    }
+
+    // Function to send message to your API (replace this with your API call)
+    async function sendMessageToAPI(message) {
+        try {
+            const response = await query({
+                "question": message,
+                "overrideConfig": {
+                    "url": "https://d1bj1bc7hxixa3.cloudfront.net/Untitled.txt"
+                }
+            });
+            console.log("API response:", response);
+            return response;
+        } catch (error) {
+            console.error("Error querying API:", error);
+            throw error;
+        }
+    }
+
+    async function query(data) {
+        const response = await fetch(
+            "http://localhost:3000/api/v1/prediction/0fae1c12-cd32-4f22-94a4-20f5e0008d86",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        );
+        const result = await response.json();
+        return result['text'];
+    }
+
 </script>
 
 @* <div>
