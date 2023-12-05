@@ -23,7 +23,7 @@
         {
             <div class="card-container" asp-action="Details" asp-route-id="@item.Id">
                 <a href="/" class="hero-image-container">
-                    <img class="hero-image" src="https://i.postimg.cc/NfR2yhNs/image-equilibrium.jpg"
+                    <img class="hero-image" src="/images/document-automation-hero.png"
                         alt="Spinning glass cube" />
                 </a>
                 <main class="main-content">
@@ -31,8 +31,7 @@
                     <p>@Html.DisplayFor(modelItem => item.Description)</p>
                 </main>
                 <div class="card-attribute">
-                    <img src="https://i.postimg.cc/SQBzNQf1/image-avatar.png" alt="avatar" class="small-avatar" />
-                    <p>Creation of <span><a href="#">Jules Wyvern</a></span></p>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </div>
             </div>
         }

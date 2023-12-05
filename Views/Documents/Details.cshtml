@@ -2,18 +2,28 @@
 
 @{
     ViewData["Title"] = @Html.DisplayNameFor(model => model.Name);
+    var path = Model.Path?.ToString();
+    var extension = System.IO.Path.GetExtension(path);
 }
 
 <link rel="stylesheet" href="/css/Document.css" />
 <div class="main-container">
     <div class="left-side">
         <div class="pdf-container">
-            <object data="@Html.DisplayFor(model => model.Path)" type="application/pdf" class="pdf-frame" height="300"
-                width="20%">
-            </object>
+            @if (extension != null && extension.ToLower() == ".txt")
+            {
+                <iframe src="@Html.DisplayFor(model => model.Path)" class="pdf-frame" height="300" width="20%"></iframe>
+            }
+            else
+            {
+                <object data="@Html.DisplayFor(model => model.Path)" type="application/pdf" class="pdf-frame" height="300"
+                    width="20%">
+                </object>
+            }
         </div>
     </div>
     <div class="right-side">
+        <button id="copyButton" onclick="copyMessage()">Copy Message</button>
         <div class="chat-container">
             <div class="chat-messages" id="chat-messages">
                 <!-- This is where chat messages will be displayed -->
@@ -38,7 +48,7 @@
             // Add user message to the chat interface
             const userMessageElement = document.createElement("div");
             userMessageElement.classList.add("message", "user");
-            userMessageElement.textContent = message;
+            userMessageElement.textContent = "User : " + message;
             chatMessages.appendChild(userMessageElement);
 
             // Send the message to your API and get the response
@@ -56,11 +66,22 @@
         }
     });
 
+    function copyMessage() {
+        const message = "http://localhost:3000/chatbot/78c0b763-6fea-4e08-a9dd-5e0e1ed933f3"; // Your message here
+        navigator.clipboard.writeText(message)
+            .then(() => {
+                alert("Link Copied");
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    }
+
     // Function to add bot message to chat
     function addBotMessageToChat(response, chatMessages) {
         const botMessageElement = document.createElement("div");
         botMessageElement.classList.add("message", "bot");
-        botMessageElement.textContent = response; // Assuming the response is text
+        botMessageElement.textContent = "Bot " + response; // Assuming the response is text
         chatMessages.appendChild(botMessageElement);
     }
 

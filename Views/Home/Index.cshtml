@@ -1,32 +1,32 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="css/LoggedInUserIndex.css">
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div id="card-body" class="card-body text-white mailbox-widget pb-0">
-                    <h2 class="text-white pb-3">Your Favourites</h2>
-                </div>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
-                        <div>
-                            <!-- Mail list-->
-                            <div class="table-responsive">
-                                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
-                                    <tbody>
-                                        <!-- row -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+<link rel="stylesheet" href="css/Landing.css">
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">Try out the newest feature of document chat for free</h1>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-center text-lg-start">
+                        <a
+                            class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+                             asp-controller="Documents"
+                                    asp-action="Index">
+                            <span>Start new document</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <img src="~/images/hero-img.png" class="img-fluid" alt="">
+            </div>
         </div>
     </div>
-</div>
-<script src="js/Home.js"></script>
+
+</section><!-- End Hero -->
